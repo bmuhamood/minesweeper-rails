@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title> Minesweeper </title>
+	</head>
+	<body>
+			<table>
+				<!-- header table --> 
+				<table class=headerTable>
+					<tr>
+						<td class=newGameCell>
+							<%= link_to "New Game",
+								url = new_game_url("board[mode_name]" => @game.board.mode_name),
+								html_options = {'accesskey' => 'n', 'title' => 'Click to start a game in the same mode. Access key is n.'} %>
+							<br>
+							<span class=sameModeText>
+								(in same mode)
+							</span>
+						</td>
+						<td>
+							<%= form_tag do %>
+								<label accesskey=C for=selectMode>
+									<span class=accessKey>C</span>hange mode:
+								</label>
+								<%= select_tag("board[mode_name]", options_for_select(request.query_parameters[:modes], @game.board.mode.name)) %>
+							<% end %>
+						</td>
+					</tr>
+				</table>
+				<!-- end of header table -->
+			</table>
+
+		<center>	
+			<table width=300 id=board cellspacing=0>
+				<%
+					row_count = @game.board.mode.rows - 1
+					column_count = @game.board.mode.columns - 1
+					(0..row_count).each do |row_index|
+				%>
+				<tr>
+					<%
+						(0..column_count).each do |column_index|
+					%>
+					<%= render :partial => 'cell', :locals => {:row => row_index, :column => column_index} %>
+					<%
+						end
+					%>
+				</tr>
+				<%
+					end
+				%>
+			</table>
+		</center>
+		<!-- game board -->
+		<center>
+
+			<table width=300>
+				<!-- Time counter and mine counter fields -->
+				<tr>
+					<td class=fieldSpacer>&nbsp;</td>
+					<td>Mines:</td>
+					<td class=field>5</td>
+					<td class=fieldSpacer>&nbsp;</td>
+					<td>Time:</td>
+					<td class=field>5</td>
+					<td class=fieldSpacer>&nbsp;</td>
+				</tr>
+				<!-- Time counter and mine counter fields end here -->
+			</table>
+		</center>
+		<!-- end of game board -->
+
+		<div id=usage_div>
+			<h3>Usage</h3>
+			<ul>
+				<li>
+					<span>Select a tile</span> - Mouse over it or use the arrow keys
+				</li>
+				<li>
+					<span>Mark/unmark a tile as suspect</span> - right click on it or Shift + spacebar 
+				</li>
+				<li>
+					<span>Reveal a tile</span> - click on it or press the spacebar.
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
