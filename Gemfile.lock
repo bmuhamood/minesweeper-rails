@@ -137,9 +137,6 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    sprockets (4.0.3)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
     sqlite3 (1.4.2)
     strscan (3.0.3)
     thor (1.2.1)
@@ -161,7 +158,6 @@ DEPENDENCIES
   mocha (= 1.2.1)
   puma
   rails
-  sprockets
   sqlite3
   tzinfo-data
   webrick

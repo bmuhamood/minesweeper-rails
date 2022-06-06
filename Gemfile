@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails'
-gem 'sprockets'
+# gem 'sprockets'
 gem 'webrick'
 gem "tzinfo-data"
 gem 'puma'
