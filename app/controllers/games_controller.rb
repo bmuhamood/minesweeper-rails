@@ -3,7 +3,7 @@ require 'board_modes'
 
 class GamesController < ApplicationController
 
-	respond_to :html, :json
+	respond_to? :html, :json
 
 	def new 
 		mode = params[:board][:mode_name] if params[:board]
